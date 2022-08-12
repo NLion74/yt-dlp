@@ -89,16 +89,9 @@ do
 	    break 
             ;;
         "Stop")
-            if [ -x $Stop ]
-	    then
-	    :
-            else
-		sudo chmod +x $Stop
-            fi
-
             echo "Stopping running downloading process"
             echo "Be careful this will break your video if not fully downloaded"
-	    /bin/bash $Stop 
+	    killall -g start-download.sh
 	    break
 	    ;;
 	"View")
