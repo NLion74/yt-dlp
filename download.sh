@@ -13,9 +13,6 @@
 #location of the start-download script
 Start='/root/yt-dlp/other/scripts/start-download.sh';
 
-#location of the stop-download script
-Stop='/root/yt-dlp/other/scripts/stop-download.sh';
-
 #location of the automated log file
 View='/root/yt-dlp/other/logs/yt-dlp-automated.log';
 
