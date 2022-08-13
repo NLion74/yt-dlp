@@ -47,7 +47,7 @@ do
     case $opt in
 	"Download")
 	    printf "%s\n" "" "Paste a youtube video link: " ""
-	    read link
+	    read -r link
 	    echo ""
 	    PS3='Please enter Download Resolution: '
 	    quality=("480p" "720p" "1080p" "2160p" "Best")
@@ -56,37 +56,37 @@ do
 		case $opt2 in 
 		     "480p")
 		     			echo "Downloading $link in 480p"
-						cd $Workingdir
-						cd $Folder
-						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=480][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best $link
+						cd "$Workingdir" || exit
+						cd "$Folder" || exit
+						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=480][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best "$link"
 			break
 		     	;;
 		     "720p")
                         echo "Downloading $link in 720p"
-						cd $Workingdir
-						cd $Folder
-						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=720][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best $link
+						cd "$Workingdir" || exit
+						cd "$Folder" || exit
+						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=720][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best "$link"
 			break
 		     	;;
 		     "1080p")
                         echo "Downloading $link in 1080p"
-						cd $Workingdir
-						cd $Folder
-						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=1080][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best $link
+						cd "$Workingdir" || exit
+						cd "$Folder" || exit
+						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=1080][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best "$link"
 		     	break
 			;;
 		     "2160p")
                         echo "Downloading $link in 2160p"
-						cd $Workingdir
-						cd $Folder
-						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=2160][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best $link
+						cd "$Workingdir" || exit
+						cd "$Folder" || exit
+						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=2160][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best "$link"
 		     	break
 			;;
 		     "Best")
 			echo "Downloading $link in Best Resolution possible"
-						cd $Workingdir
-						cd $Folder
-						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best $link
+						cd "$Workingdir" || exit
+						cd "$Folder" || exit
+						yt-dlp -i -o 'Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best "$link"
 			break
 			;;
 		     *) echo "$REPLY is not an valid Resolution";;
@@ -95,12 +95,12 @@ do
 	break
 ;;
     "Start")
-        if [ -x $Workingdir$Folder$Start ]
+        if [ -x "$Workingdir""$Folder""$Start" ]
         then
         :
         else
-            cd $Workingdir
-            cd $Folder
+			cd "$Workingdir" || exit
+			cd "$Folder" || exit
             chmod +x $Start
 	    fi
 
@@ -109,8 +109,8 @@ do
 	    echo "You wont be able to see the progess in this window"
 	    echo "but if you quit the download will stop"
 	    echo ""
-	    echo "to see the download progress use the "View" option"
-	    /bin/bash $Startdir $Resolution
+	    echo "to see the download progress use the View option"
+	    /bin/bash "$Startdir" "$Resolution"
 	    break 
         ;;
     "Stop")
@@ -121,9 +121,9 @@ do
 	    ;;
 	"View")
         echo "View running and past downloading processes"
-		cd $Workingdir
-		cd $Folder
-        tail -f $View
+		cd "$Workingdir" || exit
+		cd "$Folder" || exit
+        tail -f "$View"
         break
 	    ;;
 	"Edit")
@@ -134,16 +134,16 @@ do
     		case $opt3 in
 	    		"Channels")
 				echo "Editing Channels"
-				cd $Workingdir
-				cd $Folder
-				nano $Channels
+				cd "$Workingdir" || exit
+				cd "$Folder" || exit
+				nano "$Channels"
 				break
 				;;
 			"Downloaded")
 				echo "Editing Downloaded"
-				cd $Workingdir
-				cd $Folder
-				nano $Downloaded
+				cd "$Workingdir" || exit
+				cd "$Folder" || exit
+				nano "$Downloaded"
 				break
 				;;
 			*) echo "$REPLY is not an valid config";;
