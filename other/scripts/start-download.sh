@@ -7,7 +7,7 @@ exec 3>&1 4>&2 >>$LOGFILE 2>&1
 if [[ $RESOLUTION == '480p' || $RESOLUTION == '720p' || $RESOLUTION == '1080p' || $RESOLUTION == '2160p' ]]; then
 RESOLUTION2=${RESOLUTION%p}
 
-yt-dlp --download-archive /root/yt-dlp/other/config/downloaded.txt -i -o '/root/yt-dlp/Downloads/channels/%(channel)s/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=$RESOLUTION2][ext=mp4]+ba --batch-file /root/yt-dlp/other/config/channel-list.txt
+yt-dlp --download-archive /root/yt-dlp/other/config/downloaded.txt -i -o '/root/yt-dlp/Downloads/channels/%(channel)s/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height="$RESOLUTION2"][ext=mp4]+ba --batch-file /root/yt-dlp/other/config/channel-list.txt
 elif  [[ $RESOLUTION == 'bv' ]]; then
 yt-dlp --download-archive /root/yt-dlp/other/config/downloaded.txt -i -o '/root/yt-dlp/Downloads/channels/%(channel)s/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[ext=mp4]+ba --batch-file /root/yt-dlp/other/config/channel-list.txt
 else

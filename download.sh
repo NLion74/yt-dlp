@@ -19,6 +19,9 @@ View='/root/yt-dlp/other/logs/yt-dlp-automated.log';
 #location of the specified channels list
 Channels='/root/yt-dlp/other/config/channel-list.txt'
 
+#location of the already downloaded videos
+Downloaded='/root&yt-dlp/other/config/downloaded.txt'
+
 #the resolution that you want to download the specified channels with.
 #resolution can only be 480p, 720p, 1080p, 2160p, bv.
 #bv stands for best video or best resolution
@@ -39,8 +42,8 @@ do
 	    do
 		case $opt2 in 
 		     "480p")
-		     	echo "Downloading $link in 480p"
-			yt-dlp -i -o '/root/yt-dlp/Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=480][ext=mp4]+ba $link
+		     			echo "Downloading $link in 480p"
+						yt-dlp -i -o '/root/yt-dlp/Downloads/manual-downloads/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s].%(ext)s' -f bv[height=480][ext=mp4]+ba $link
 			break
 		     	;;
 		     "720p")
