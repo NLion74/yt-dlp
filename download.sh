@@ -11,7 +11,7 @@
 #This will automaticly download your specified channels every 3 hours in 1080p quality
 
 #name of the folder
-Folder='yt-dlp/'
+Folder='yt-dlp-downloader/'
 
 #the workingdir
 Workingdir=$HOME/

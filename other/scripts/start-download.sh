@@ -8,13 +8,13 @@ ENDCOLOR="\e[0m"
 RESOLUTION=$1
 
 #name of the folder
-Folder='yt-dlp/'
+Folder='yt-dlp-downloader/'
 
 #the workingdir
 Workingdir=$HOME/
 
 #logfile
-LOGFILE='/root/yt-dlp/other/logs/yt-dlp-automated.log'
+LOGFILE=${Workingdir}${Folder}other/logs/yt-dlp-automated.log
 exec 3>&1 4>&2 >>$LOGFILE 2>&1
 
 if [[ $RESOLUTION == '480p' || $RESOLUTION == '720p' || $RESOLUTION == '1080p' || $RESOLUTION == '2160p' ]]; then
