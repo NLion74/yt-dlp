@@ -1,4 +1,3 @@
-This Script won't work if its not in the /root folder.
 
 Setting up automatic crontab downloads:
 
